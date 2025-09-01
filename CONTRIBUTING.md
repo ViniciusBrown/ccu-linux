@@ -41,7 +41,7 @@ source venv/bin/activate  # Linux/Mac
 # venv\Scripts\activate   # Windows
 
 # Install project and development dependencies
-pip install -e .[dev]
+pip install -e '.[dev]'   # Linux/Mac
 
 # Make script executable (Linux/Mac)
 chmod +x claude_monitor.py
