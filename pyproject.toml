@@ -71,6 +71,7 @@ test = [
   "pytest-asyncio>=0.24.0",
   "pytest-benchmark>=4.0.0"
 ]
+tray = ["PyQt6>=6.4.0"]
 
 
 [project.urls]
@@ -88,6 +89,8 @@ claude-code-monitor = "claude_monitor.__main__:main"
 cmonitor = "claude_monitor.__main__:main"
 ccmonitor = "claude_monitor.__main__:main"
 ccm = "claude_monitor.__main__:main"
+claude-monitor-tray = "claude_monitor.tray.__main__:main"
+ccmt = "claude_monitor.tray.__main__:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
