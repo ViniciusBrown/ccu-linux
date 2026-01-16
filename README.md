@@ -218,6 +218,8 @@ The tool can be invoked using any of these commands:
 - cmonitor (short)
 - ccmonitor (short alternative)
 - ccm (shortest)
+- claude-monitor-tray (tray application)
+- ccmt (tray application short)
 
 #### Save Flags Feature
 
@@ -268,6 +270,10 @@ claude-code-monitor  # Full descriptive name
 cmonitor             # Short alias
 ccmonitor            # Short alternative
 ccm                  # Shortest alias
+
+# System tray application
+claude-monitor-tray  # Tray app
+ccmt                 # Tray app short alias
 
 # Exit the monitor
 # Press Ctrl+C to gracefully exit
@@ -848,6 +854,71 @@ claude-monitor --plan pro
 claude-monitor --plan max20 --reset-hour 6
 ```
 
+### 🖥️ System Tray Application
+
+A **system tray application** that lets you monitor your Claude Code token usage directly from your desktop, without needing a terminal window open.
+
+![System Tray Icon](static/tray.png)
+
+![Claude Monitor Tray App](static/ccmt.png)
+
+#### Tray Features
+
+- Real-time token usage monitoring in the system tray
+- Claude Code style icon with color-coded status (green/yellow/red)
+- Click to view detailed statistics window
+- Configurable warning and critical thresholds
+- Autostart support
+- Settings dialog for customization
+
+#### Running the Tray Application
+
+```bash
+# Launch the tray application
+claude-monitor-tray
+
+# Or use the short alias
+ccmt
+```
+
+The tray icon will appear in your system tray. Click on it to view detailed statistics, or right-click for the menu.
+
+#### Tray Icon States
+
+| Color | Status | Description |
+|-------|--------|-------------|
+| Green | Normal | Usage below warning threshold |
+| Yellow | Warning | Usage between warning and critical thresholds |
+| Red | Critical | Usage above critical threshold |
+| Gray | Loading/Error | Data loading or error state |
+
+#### Tray Configuration
+
+The tray app stores its settings in `~/.config/claude-monitor-tray/settings.json`.
+
+Available settings:
+- **Plan**: pro, max5, max20, or custom
+- **Refresh rate**: How often to update (in seconds)
+- **Warning threshold**: Percentage for warning state (default: 70%)
+- **Critical threshold**: Percentage for critical state (default: 90%)
+- **Autostart**: Launch on system startup
+
+#### Installing with Tray Support
+
+```bash
+# With uv (recommended)
+uv tool install claude-monitor[tray]
+
+# With pip
+pip install claude-monitor[tray]
+
+# From source
+pip install -e ".[tray]"
+```
+
+The tray application requires PyQt6 (included with `[tray]` extra).
+
+---
 
 ## 🔧 Development Installation
 
